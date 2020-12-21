@@ -10,49 +10,57 @@ class Zoo:
         print(f"Zoo named {zoo_name} created!!")
 
     def feed(self):
-        self.health += 10
-        self.happiness += 5
+        randhealth = random.randrange(1, 25)
+        randhappy = random.randrange(1, 10)
+        self.health += randhealth
+        self.happiness += randhappy
         newhealth = self.health
         newhappiness = self.happiness
         for animals in all_animals:
             if animals["name"] == self.name:
                 animals["health"] = newhealth
                 animals["happiness"] = newhappiness
-        print(f"{self.name} has just grabbed a bite to eat (hopefully it wasn't you!). Their energy/health are up, as is their happiness!")
+        print(f"{self.name} has just grabbed a bite to eat (hopefully it wasn't you!). Their energy/health are up by {randhealth}, and their happiness is up by {randhappy}!")
 
     def play(self):
-        self.health -= 15
-        self.happiness += 10
+        randhealth = random.randrange(1, 25)
+        randhappy = random.randrange(1, 10)
+        self.health -= randhealth
+        self.happiness += randhappy
         newhealth = self.health
         newhappiness = self.happiness
         for animals in all_animals:
             if animals["name"] == self.name:
                 animals["health"] = newhealth
                 animals["happiness"] = newhappiness
-        print(f"{self.name} has just played for a bit! Their happieness is up, but their health and energy are down.")
+        print(f"{self.name} has just played for a bit! Their happieness is up by {randhappy}, but their health and energy are down by {randhealth}.")
     
     def captivity(self):
+        randhealth = random.randrange(1, 10)
+        randhappy = random.randrange(10, 30)
         animalname = self.name
-        self.health -= 5
-        self.happiness -= 20
+        self.health -= randhealth
+        self.happiness -= randhappy
         newhealth = self.health
         newhappiness = self.happiness
         for animals in all_animals:
             if animals["name"] == animalname:
                 animals["health"] = newhealth
                 animals["happiness"] = newhappiness
-        print(f"{self.name} has just remembered that their in a zoo, locked away. Both their health and energy, and their happiness are down.")
+        print(f"{self.name} has just remembered that their in a zoo, locked away. Their health and energy are down by {randhealth}, and their happiness is down by {randhappy}.")
 
     def sleep(self):
-        self.health += 20
-        self.happiness += 10
+        randhealth = random.randrange(15, 30)
+        randhappy = random.randrange(1, 10)
+        self.health += randhealth
+        self.happiness += randhappy
         newhealth = self.health
         newhappiness = self.happiness
         for animals in all_animals:
             if animals["name"] == self.name:
                 animals["health"] = newhealth
                 animals["happiness"] = newhappiness
-        print(f"{self.name} has just slept! Health/Energy and happiness are up!!")
+        print(f"{self.name} has just slept! Health/Energy is up by {randhealth} and happiness is up by {randhappy}!!")
 
 class Animal(Zoo):
     def __init__(self, health = 50, happiness = 50):
@@ -122,5 +130,10 @@ Tony.sleep()
 
 display_animals()
 
+Paddington.sleep()
+Simba.sleep()
+Tony.play()
+
+display_animals()
 
 
